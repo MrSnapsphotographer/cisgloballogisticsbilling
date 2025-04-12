@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CIS Global Logistics | Consignment Slip</title>
+  <style>
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      html, body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: white !important;
+      }
+
+      .container {
+        transform: scale(0.82);
+        transform-origin: top left;
+        width: 100%;
+        height: auto;
+        page-break-inside: avoid;
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0;
+        padding: 0;
+      }
+
+      .print-button {
+        display: none !important;
+      }
+
+      input, select {
+        border: none !important;
+        background: transparent !important;
+        color: black !important;
+      }
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 20px 30px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #000;
+      padding-bottom: 10px;
+    }
+
+    .logo img {
+      height: 60px;
+    }
+
+    .company-info {
+      text-align: right;
+      font-size: 13px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin: 5px 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 20px;
+    }
+
+    h2 {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .section-title {
+      font-weight: bold;
+      background: #003366;
+      color: white;
+      padding: 6px;
+      font-size: 13px;
+      margin-top: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 12px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 5px;
+      font-size: 13px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .declaration {
+      font-size: 12px;
+      margin-top: 15px;
+      border-top: 1px dashed #aaa;
+      padding-top: 8px;
+    }
+
+    .signature-area {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .signature-area img {
+      max-height: 90px;
+    }
+
+    .print-button {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .print-button button {
+      background: #003366;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="billingSlip">
+    <div class="header">
+      <div class="logo">
+        <img src="logo.jpg" alt="CIS Logo">
+      </div>
+      <div class="company-info">
+        <strong>CIS Global Logistics</strong><br>
+        #13, 2nd Floor, 1st Main, Mauthi Layout,<br>
+        Behind Pallavi Dhaba, Makali, Tumkur Road,<br>
+        Bangalore - 562162<br>
+        📞 +91 6361812934<br>
+        ✉️ info@cisgloballogistics.com<br>
+        GSTIN: 29ACYPJ0600G1ZL | PAN: ACYPJ0600G
+      </div>
+    </div>
+
+    <h1>Consignment Note / Billing Slip</h1>
+    <h2>NON-NEGOTIABLE</h2>
+
+    <div class="declaration">
+      GOODS ARE CARRIED AT OWNER'S RISK ONLY
+    </div>
+
+    <div class="section grid">
+      <div><label>Consignment No.</label><input type="text" id="invoiceNumber" readonly></div>
+      <div><label>Date</label><input type="text" id="dateField" readonly></div>
+      <div><label>Vehicle No.</label><input type="text"></div>
+      <div><label>Eway Bill No.</label><input type="text"></div>
+    </div>
+
+    <div class="section-title">Type of Payment</div>
+    <div class="grid">
+      <div>
+        <label>Select Payment Type</label>
+        <select>
+          <option>Paid</option>
+          <option>To Pay</option>
+          <option>TBB</option>
+          <option>AT</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section-title">From / To Information</div>
+    <div class="grid">
+      <div>
+        <label>From</label><input type="text">
+        <label>Address</label><input type="text"><input type="text">
+        <label>GSTIN</label><input type="text">
+      </div>
+      <div>
+        <label>To </label><input type="text">
+        <label>Address</label><input type="text"><input type="text">
+        <label>GSTIN</label><input type="text">
+      </div>
+    </div>
+
+    <div class="section-title">Goods & Charges</div>
+    <div class="grid">
+      <div><label>Contents</label><input type="text"></div>
+      <div><label>Package Count</label><input type="text"></div>
+      <div><label>Packing Type</label><input type="text"></div>
+      <div><label>Actual Weight</label><input type="text"></div>
+      <div><label>Charged Weight</label><input type="text"></div>
+      <div><label>Invoice No.</label><input type="text"></div>
+    </div>
+
+    <div class="section-title">Freight Information</div>
+    <div class="grid">
+      <div><label>Docket Charges</label><input type="text" value="Rs.100.00"></div>
+      <div><label>DD/Collection</label><input type="text"></div>
+      <div><label>DD/DDA</label><input type="text"></div>
+      <div><label>DOD/COD/DACC</label><input type="text"></div>
+      <div><label>FOV</label><input type="text"></div>
+      <div><label>Mehadi</label><input type="text"></div>
+      <div><label>To Pay</label><input type="text"></div>
+      <div><label>Statistical Charges</label><input type="text" value="Rs.50.00"></div>
+      <div><label>Sub Total</label><input type="text"></div>
+      <div><label>GST Charges</label><input type="text"></div>
+      <div><label>Grand Total</label><input type="text"></div>
+    </div>
+
+    <div class="section-title">Service & Delivery</div>
+    <div class="grid">
+      <div><label>Mode of Dispatch</label>
+        <select><option>Air</option><option>Road</option><option>Sea</option><option>Train</option></select>
+      </div>
+      <div><label>Delivery Type</label>
+        <select><option>Godown</option><option>Door</option></select>
+      </div>
+      <div><label>Pickup Type</label>
+        <select><option>Godown</option><option>Door</option></select>
+      </div>
+    </div>
+
+    <div class="declaration">
+      "I/We hereby agree to the Terms & Conditions set on the reverse of the consignor copy and declare that the contents on this CN note are true & correct."
+    </div>
+
+    <div class="signature-area">
+      <div>
+        <label>Signature (Consignor)</label>
+        <img src="signature.png" alt="Signature">
+      </div>
+      <div>
+        <label>Date</label>
+        <input type="text">
+      </div>
+    </div>
+
+    <div class="print-button">
+      <button onclick="window.print()">Print Billing Slip</button>
+    </div>
+  </div>
+
+  <script>
+    const today = new Date();
+    document.getElementById("dateField").value = today.toLocaleDateString();
+
+    const invoiceInput = document.getElementById("invoiceNumber");
+    let lastInv = localStorage.getItem("lastInvoiceNumber");
+    if (!lastInv) lastInv = 10000;
+    else lastInv = parseInt(lastInv) + 1;
+    invoiceInput.value = lastInv;
+    localStorage.setItem("lastInvoiceNumber", lastInv);
+  </script>
+</body>
+</html>
